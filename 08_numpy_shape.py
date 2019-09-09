@@ -27,6 +27,8 @@ print(d, d.shape)
 # print(d, d.shape)
 e = d.reshape((3, 2, 5))
 print(e, e.shape, d, d.shape)
+f = d.reshape((3, -1, 5))
+print(e, e.shape, d, d.shape)
 
 """
 数组与标量 数组之间的运算 add multiple
@@ -41,6 +43,7 @@ a1 = [2, 3, 5]
 b1 = ['222', 'dfy', 88]
 print('a1', a1, 'b1', b1)
 print('a1+b1', a1+b1)
+
 a = np.array([2, 3, 5])
 b = np.array(['4', '5', '2'], dtype=int)
 print('a*b', a*b)
@@ -55,8 +58,8 @@ print('a^2', a**2)
 矩阵积：也称为 点积、数量积
 三维数组也可以做矩阵积  多维数组也可以只是复杂一些
 
-    .. _dot:
-        https://docs.scipy.org/doc/numpy-1.15.0/reference/generated/numpy.dot.html#numpy.dot
+.. _dot:
+    https://docs.scipy.org/doc/numpy-1.15.0/reference/generated/numpy.dot.html#numpy.dot
 """
 c = np.array([[1, 2, 3], [4, 5, 6]])
 d = np.array([[2, 3, 4], [4, 6, 8]])

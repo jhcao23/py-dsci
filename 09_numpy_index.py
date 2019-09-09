@@ -38,11 +38,11 @@ print('d', d, 'type', type(d))
 a = np.arange(32).reshape((8, -1))
 print(a)
 print('------')
-# print(a[1:3])  连续
-# print(a[[0, 3, 5]])  非连续行  连续的列
+print(a[1:3])  #连续
+print(a[[0, 3, 5]])  #非连续行  连续的列
 # axis0行 axis1列
 # 非连续行 非连续列  交叉的值
-# print(a[[0, 3, 5], [0, 3, 2]])
+print(a[[0, 3, 5], [0, 3, 2]])
 # 非连续行 非连续列 所有的
 print(a[np.ix_([0, 3, 5], [0, 2, 3])])
 print('-----')

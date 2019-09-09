@@ -23,7 +23,10 @@ import numpy as np
 # shape ()
 a = np.arange(24).reshape((2, 3, 4))
 print(a)
-# b = a.T
-# b = np.transpose(a)
+
+b = a.T
+print(b, b.shape)
+b = np.transpose(a)
+print(b, b.shape)
 b = a.transpose()
 print(b, b.shape)
