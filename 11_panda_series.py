@@ -85,6 +85,7 @@ dict1 = {'语文': 88, '数学': 99, '外语': 100}
 s1 = pd.Series(dict1, dtype=np.float)
 print(s1)
 print(s1['数学':'语文'])
+print(s1['语文':'数学'])
 print(s1[1:2])
 arr1 = np.array([100, 20, 30])
 print(s1+arr1)
@@ -92,9 +93,13 @@ print(s1+arr1)
 s2 = pd.Series({'dfy': 100, 'zhangsan': 88})
 print(s2)
 s2.index = ['a', 'b']
+print(s2)
+
+s2 = pd.Series({'dfy': 100, 'zhangsan': 88})
 s2 = pd.Series(s2, index=['dfy', 'zhangsan', 'c'])
 print(s2)
 print('-----')
+
 """
 NaN在pandas中表示一个缺失值或NA值
 pandas中的isnull和notnull两个函数可以用于在Series中检测缺失值，这两个函数返回一个布尔类型的Series
