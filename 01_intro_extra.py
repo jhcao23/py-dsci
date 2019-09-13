@@ -7,10 +7,10 @@
 常用的高级数据分析库 nltk   igraph  scikit-learn
 
 nltk 是做文本分析的 文本处理  natural language toolkit  自然语言处理工具包
-nltk 应用：文本提取  词汇切分   词频分析  词袋模型   情感分析
+nltk 应用: 文本提取  词汇切分   词频分析  词袋模型   情感分析
 安装: pip install -U nltk
 引入: import nltk
-下载语料库：nltk.download()
+下载语料库: nltk.download()
 
 igraph  社交网络分析
 igraph图计算和社交网络分析 <http://igraph.org/python>

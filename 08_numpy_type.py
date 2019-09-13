@@ -15,7 +15,7 @@ import numpy as np
 """
 # 数据类型的简写  int8  i8
 uint8 u1   bool_   float32  f($)
-complex128 c16（由两个64位的浮点数来表示）  复数  实数+虚数
+complex128 c16 (由两个64位的浮点数来表示)   复数  实数+虚数
 object 往数组里存一个自定义的  或 ndarray里放ndarray
 string_  unicode_
 """

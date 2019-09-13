@@ -12,18 +12,18 @@ http://www.ai111.vip/thread-224-1-1.html
 
 """
 DataFrame的创建:  2 字典
-字典中的value只能是一维数组或者单个的简单数据类型，如果是数组长度必须一致
+字典中的value只能是一维数组或者单个的简单数据类型, 如果是数组长度必须一致
 
-索引对象，不管是Series还是DataFrame对象，都有索引对象
+索引对象, 不管是Series还是DataFrame对象, 都有索引对象
 他们的自动对齐功能也是通过索引实现的
 DataFrame可以直接通过列索引获取指定列的数据
 
-如果需要获取指定行的数据的话，需要通过ix方法来获取对应行索引的行数据
+如果需要获取指定行的数据的话, 需要通过ix方法来获取对应行索引的行数据
 
 DataFrame可以切片操作
 
 修改值  新增列 新增行  numpy是不能加新行新列的 但是DataFrame可以
-修改某个具体对象的值，即可以先列后行 也可以先行后列 最好是先列后行可以自动改变对象的数据类型
+修改某个具体对象的值, 即可以先列后行 也可以先行后列 最好是先列后行可以自动改变对象的数据类型
 """
 
 import pandas as pd
@@ -57,11 +57,11 @@ df2.index = ['dfy', 'zs', 'ls']
 print('df2', df2)
 
 # reading should go column first then row (index)
-print(df2['dfy']['语文']) # throw error
+#print(df2['dfy']['语文']) # throw error
 print(df2['语文']['dfy']) # okay!
 print(df2.ix['dfy']['语文'])
-print(df2[:2][:2])
 print(df2.ix[:2, :2])
+#print(df2[:2, :2]) # throw error
 print(df2.dtypes)
 
 # assignment to DataFrame

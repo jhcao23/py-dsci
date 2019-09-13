@@ -35,8 +35,8 @@ print(reduce(lambda2, range(8)))
 
 print(list(filter(lambda3, range(8))))
 
-# 练习：计算5!+4!+3!+2!+1!的和
-# 要求：使用我们刚刚讲的lambda和map reduce filter
+# 练习: 计算5!+4!+3!+2!+1!的和
+# 要求: 使用我们刚刚讲的lambda和map reduce filter
 
 # 5!= 5*4*3*2*1
 la1 = lambda x, y: x * y

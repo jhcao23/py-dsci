@@ -5,8 +5,8 @@
 
 conda install XXX OR  pip/pip3 install XXX
 
-numpy提供常用的数值数组、矩阵等函数
-numpy的优点：1、基于向量化的运算   2、进行数值运算时numpy数组比list效率高
+numpy提供常用的数值数组 矩阵等函数
+numpy的优点: 1 基于向量化的运算   2 进行数值运算时numpy数组比list效率高
 """
 import numpy as np
 
@@ -19,7 +19,7 @@ a = np.arange(10)
 print(a**2)
 
 """
-scipy 是一种基于numpy的扩展 用来做高等数学、信号处理、优化、统计的扩展包比如：线性代数 统计的 空间的数据结构
+scipy 是一种基于numpy的扩展 用来做高等数学 信号处理 优化 统计的扩展包比如: 线性代数 统计的 空间的数据结构
 """
 from scipy import linalg
 
@@ -31,7 +31,7 @@ print(linalg.det(a))
 # 推荐用scipy.linalg代替numpy.linalg
 
 """
-Pandas 是一种构建于Numpy的高级数据结构和精巧工具，快速简单的处理数据    数据结构：Series和DataFrame
+Pandas 是一种构建于Numpy的高级数据结构和精巧工具, 快速简单的处理数据    数据结构: Series和DataFrame
 """
 import pandas as pd
 

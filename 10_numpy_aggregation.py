@@ -12,15 +12,15 @@ http://www.ai111.vip/thread-219-1-1.html
 
 """
 ndarray的一元函数
-abs fabs 计算整数 浮点数 复数的绝对值，对于非复数，fabs更快
+abs fabs 计算整数 浮点数 复数的绝对值, 对于非复数, fabs更快
 sqrt 计算各个元素的平方根 相当于arr**0.5 要求arr的每个元素必须非负数
 square 计算各个元素的平方  相当于arr**2
 exp 计算各个元素的指数e的x次方
 log log10 log2 log1p 分别计算自然对数 底数为10 底数为2 以及log(1+x),要求arr中的每个元素必须为正
 sign 计算各个元素的正负号 1为正数 -1为负数 0
 ceil 计算各个元素的ceilling值 即大于等于该值的最小整数
-floor 计算各个元素的floor值，即小于等于该值的最大整数
-rint 各个元素的四舍五入到最接近的整数，保留dtype的类型
+floor 计算各个元素的floor值, 即小于等于该值的最大整数
+rint 各个元素的四舍五入到最接近的整数, 保留dtype的类型
 modf 将数组中元素的小数位和整数位以两部分独立数组的形式返回
 isnan NaN(不是一个数字) 布尔类型数组
 isfinite isinf 有穷的(非inf 非NaN)np.NaN  np.inf 无穷的  布尔类型数组
@@ -31,16 +31,16 @@ arccos arccosh arcsin arcsinh arctan arctanh   反三角函数
 ndarray的二元函数
 mod 元素级的取模%
 dot 点积 矩阵积
-greater greater_equal less less_equal equal not_equal 元素级的比较运算，最终返回一个布尔型数组
+greater greater_equal less less_equal equal not_equal 元素级的比较运算, 最终返回一个布尔型数组
 logical_and logical_or logical_xor
 power 对数组中的每个元素执行给定次数的指数值
 
 ndarray的聚合函数
-聚合函数的对一组值进行操作，返回一个单一值作为结果的函数
+聚合函数的对一组值进行操作, 返回一个单一值作为结果的函数
 常见的聚合函数有: 平均值 最大值 最小值 方差等等
 arr.min()  arr.max()  arr.mean()  arr.std() arr.sum()
 方差公式: np.sqrt(np.power(arr-arr.mean(),2).sum()/arr.size)
-二维数组的情况下，axis=0表示对同列的数据进行聚合
+二维数组的情况下, axis=0表示对同列的数据进行聚合
 axis=1 表示对同行的数据进行聚合
 arr.mean(axis=0)
 """
@@ -101,7 +101,7 @@ print(np.where(condition, 0, c))
 
 """
 应用场景: 数据去重
-np.unique函数的主要作用是将数组中的元素进行去重操作（也就是只保存不重复的数据）默认会进行排序
+np.unique函数的主要作用是将数组中的元素进行去重操作 (也就是只保存不重复的数据) 默认会进行排序
 aa = np.random.randint(4, 8, (4, 4))
 """
 # 数据去重

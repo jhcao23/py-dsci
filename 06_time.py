@@ -28,7 +28,7 @@ print(time.mktime(time_tuple))
 # 时间字符串 时间元祖  时间戳
 
 '''
-    sleep 推迟调用线程的运行，secs指秒数
+    sleep 推迟调用线程的运行, secs指秒数
 '''
 for i in range(1,3):
     print('让子弹飞一会')
