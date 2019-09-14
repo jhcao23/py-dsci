@@ -11,7 +11,7 @@ __filename__ = '07_numpy_basic'
 # NumPy模块是Python的一种开源的数值计算扩展, 是一个用python实现的科学计算包, 主要包括:
 # 1 一个具有矢量算术运算和复杂广播能力的快速且节省空间的多维数组, 称为ndarray
 # ndarray  N-dimensional array object
-# 2 用于对整组数据进行快速运算的标准数学函数 ufunc
+# 2 用于对整组数据进行快速运算的标准Math函数 ufunc
 # 3 实用的线性代数 傅里叶变换和随机数生成函数
 # 4 Numpy和稀疏矩阵的运算包Scipy配合使用更加方便
 

@@ -6,7 +6,7 @@ __product__ = 'PyCharm'
 __filename__ = '13_pandas_stats'
 
 """
-13 pandas的基本功能与常用的数学统计方法_笔记
+13 pandas的基本功能与常用的Math统计方法_笔记
 http://www.ai111.vip/thread-226-1-1.html
 """
 
@@ -28,10 +28,9 @@ pandas: 数据过滤获取
 通过DataFrame的相关方式可以获取对应的列或者数据形成一个新的DataFrame, 方便后续进行统计计算
 pandas中缺省值NaN处理方法: 1 isnull  2 notnull  3 dropna  4 fillna
 df.dropna()  默认丢弃只要包含nan数据的行 axis=1则是丢弃列 how='any'默认 如果设置how='all'则表示全部为nan才丢弃
-
 df.fillna()  填充缺失值
 
-pandas常用的数学统计方法
+pandas常用的Math统计方法
 count 计算非NA值的数量
 describe 针对Series或DataFrame列计算统计
 min/max/sum 计算最小值 最大值  总和
@@ -50,11 +49,8 @@ pct_change  计算百分数变化
 print(df2.describe())
 print(df2.quantile())
 
-
-相关系数   具体看图片
-print(df2.corr())
-协方差
-print(df2.cov())
+相关系数   具体看图片 print(df2.corr())
+协方差 print(df2.cov())
 
 pandas:唯一值 值频率计算以及成员资格
 unique方法用于获取Series或DataFrame某列中的唯一值数组 (去重数据后的数组)
@@ -76,33 +72,35 @@ import numpy as np
 # pd.read_excel()
 # pd.read_json()
 
-
 # DataFrame数据的切片
-# pandas当中处理NaN缺省值的方式: 1 isnull 2 notnull
-# 3 dropna()  4 fillna()
+# pandas当中处理NaN缺省值的方式: 1 isnull() 2 notnull() 3 dropna() 4 fillna()
 
 dict1 = {
-    '语文': [90, 88, 67],
-    '数学': [99, 78, 89],
-    '外语': [98, 102, 125],
-    '物理': 88
+    'Chinese': [90, 88, 67],
+    'Math': [99, 78, 89],
+    'English': [98, 102, 125],
+    'Physics': 88
 }
 df2 = pd.DataFrame(dict1)
-# df2['数学'][1] = np.nan
-# df2.ix[1] = np.nan
+df2['Math'][1] = np.nan
+# .ix is deprecated. Please use .loc for label based indexing or .iloc for positional indexing
+df2.iloc[1] = np.nan
 # print(df2)
 
 print('-----')
-# print(df2.dropna(axis=1))
+print('df2.dropna(axis=0)', df2.dropna(axis=0)) #return new df with dropping index (row)
+print('df2 has no change', df2)
+print('df2.dropna(axis=1)', df2.dropna(axis=1)) #return new df with dropping column
+print('df2 has no change', df2)
 
 df3 = pd.DataFrame(np.random.random((7, 3)))
 # print(df3)
-df3.ix[:4, 1] = np.nan
-df3.ix[:2, 2] = np.nan
+df3.iloc[:4, 1] = np.nan
+df3.iloc[:2, 2] = np.nan
 # print(df3)
 print('-------')
-# print(df3.fillna(1))
-# print(df3.fillna({1: 0.5, 2: -1}))
+print(df3.fillna(1))
+print(df3.fillna({1: 0.5, 2: -1}))
 
 # print(df2.describe())
 # print(df2.median())

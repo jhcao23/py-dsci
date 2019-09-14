@@ -47,27 +47,28 @@ print('df1 with given indexs and columns ', df1)
 
 # using dict to construct DataFrame
 dict1 = {
-    '语文': [90, 88, 67],
-    '数学': [99, 78, 89],
-    '外语': [98, 102, 125],
-    '物理': 88
+    'Chinese': [90, 88, 67],
+    'Math': [99, 78, 89],
+    'English': [98, 102, 125],
+    'Physics': 88
 }
 df2 = pd.DataFrame(dict1)
 df2.index = ['dfy', 'zs', 'ls']
 print('df2', df2)
 
 # reading should go column first then row (index)
-#print(df2['dfy']['语文']) # throw error
-print(df2['语文']['dfy']) # okay!
-print(df2.ix['dfy']['语文'])
+#print(df2['dfy']['Chinese']) # throw error
+print(df2['Chinese']['dfy']) # okay!
+print(df2.ix['dfy']['Chinese'])
 print(df2.ix[:2, :2])
+# question: how to do slicing for column first then row?
 #print(df2[:2, :2]) # throw error
 print(df2.dtypes)
 
 # assignment to DataFrame
-df2['外语'] = np.nan
-df2.ix['dfy']['外语'] = np.nan
-df2['外语'] = [0, 0, 0]
+df2['English'] = np.nan
+df2.ix['dfy']['English'] = np.nan
+df2['English'] = [0, 0, 0]
 df2.ix['dfy']  = [100, 100, 100, 100]
 df2['XXX'] = np.nan
 df2.ix['YYY'] = np.nan

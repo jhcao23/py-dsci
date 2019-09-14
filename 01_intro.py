@@ -19,7 +19,7 @@ a = np.arange(10)
 print(a**2)
 
 """
-scipy 是一种基于numpy的扩展 用来做高等数学 信号处理 优化 统计的扩展包比如: 线性代数 统计的 空间的数据结构
+scipy 是一种基于numpy的扩展 用来做高等Math 信号处理 优化 统计的扩展包比如: 线性代数 统计的 空间的数据结构
 """
 from scipy import linalg
 

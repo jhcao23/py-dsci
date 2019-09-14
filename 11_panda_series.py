@@ -57,10 +57,10 @@ print(s1.values)
 s1.index = [u'东方', 'a2', 'a3', 'a2']
 print(s1)
 
-s2 = pd.Series(data=[88, 99, 100], index=['语文', '数学', '外语'], dtype=np.float)
+s2 = pd.Series(data=[88, 99, 100], index=['Chinese', 'Math', 'English'], dtype=np.float)
 print(s2)
 print('-----')
-dict1 = {'语文': 88, '数学': 99, '外语': 100}
+dict1 = {'Chinese': 88, 'Math': 99, 'English': 100}
 s3 = pd.Series(dict1, dtype=np.float)
 print(s3)
 
@@ -81,11 +81,11 @@ numpy中的数组运算, 在Series中都保留了, 都可以使用, 并且Series
 
 注意: 其实在操作Series的时候, 基本上可以把Series看成numpy中的一维数组来进行
 """
-dict1 = {'语文': 88, '数学': 99, '外语': 100}
+dict1 = {'Chinese': 88, 'Math': 99, 'English': 100}
 s1 = pd.Series(dict1, dtype=np.float)
 print(s1)
-print(s1['数学':'语文'])
-print(s1['语文':'数学'])
+print(s1['Math':'Chinese'])
+print(s1['Chinese':'Math'])
 print(s1[1:2])
 arr1 = np.array([100, 20, 30])
 print(s1+arr1)
@@ -125,7 +125,7 @@ Series对象本身与其索引都有一个name属性, 默认为空, 根据需要
 """
 # name  series对象   index也有name属性
 s6 = pd.Series({'dfy': 100, 'zs': 88, 'ls': 99})
-s6.name = '数学'
+s6.name = 'Math'
 s6.index.name = '考试成绩'
 print(s6)
 
