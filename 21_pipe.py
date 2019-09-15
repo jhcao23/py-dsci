@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 __author__ = 'John'
-__date__ = '2019-09-13'
+__date__ = '2019-09-15'
 __product__ = 'PyCharm'
-__filename__ = '21_queue'
+__filename__ = '21_pipe'
 
 """
 21 python中的进程间通信 线程间通信与生产者消费者模型_笔记
@@ -42,28 +42,30 @@ import multiprocessing
 import time
 
 # 进程间通信  发消息 数据
-# 队列 管道 Queue  Pipe
+# 队列 & 管道 | Queue & Pipe
 
-# put  get
+# Pipe管道的方式 跨进程通信
 
-# queue实现跨进程通信
-
-
-def put(q):
+def put(p):
     for value in ['a', 'b', 'c']:
-        print('发送 %s 到queue中...'%value)
-        q.put(value)
+        print('发送 %s 到pipe中...'%value)
+        p[1].send(value)
+        # q.put(value)
         time.sleep(2)
 
-def get(q):
+
+def get(p):
     while True:
-        value = q.get(True)
-        print('从queue取到数据: %s !'%value)
+        # value = q.get(True)
+        value = p[0].recv()
+        print('从pipe取到数据: %s !'%value)
 
-q = multiprocessing.Queue()
+# Pipe()方法返回 (conn1,conn2)  代表是一个管道的两端
+# 前收 后发
+p = multiprocessing.Pipe(duplex=False)
 
-pwrite = multiprocessing.Process(target=put, args=(q, ))
-pread = multiprocessing.Process(target=get, args=(q, ))
+pwrite = multiprocessing.Process(target=put, args=(p, ))
+pread = multiprocessing.Process(target=get, args=(p, ))
 
 pwrite.start()
 pread.start()
@@ -72,4 +74,3 @@ pwrite.join()
 pread.terminate()
 
 print('父进程结束')
-

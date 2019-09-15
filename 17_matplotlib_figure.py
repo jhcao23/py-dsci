@@ -33,10 +33,8 @@ plt.savefig('ai111.png', dpi=200)
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 
-mpl.rcParams['font.family'] = 'sans-serif'
-mpl.rcParams['font.sans-serif'] = ['SimHei']
-mpl.rcParams['axes.unicode_minus'] = False
 print(mpl.__version__)
 # defaults to rc figure.figsize
 print(mpl.rcParams['figure.figsize'])
@@ -59,21 +57,24 @@ y = np.sin(x)
 # plt.axis([-5, 5, -5, 5])
 plt.xlim(-5, 5)
 plt.ylim(-5, 5)
-plt.xlabel(u'我是X轴')
-plt.ylabel(u'我是Y轴')
+plt.xlabel('This is X Axis')
+plt.ylabel('This is Y Axis')
 plt.xticks(np.arange(-3, 3))
 plt.yticks(np.arange(-1, 3))
 
-plt.title(u'我是标题')
+plt.title('This is title')
 plt.text(-3, -3, '$y=sin(x)', fontsize=20, bbox={'facecolor': 'yellow', 'alpha': 0.2})
 
-# plt.grid = True
+plt.grid = True
 # 颜色 线型 标记
 # help(plt.plot)
 plt.plot(x, y, color='r', linestyle='--', marker='o')
 
 # 保存图片
-plt.savefig('ai111.png', dpi=200)
+filename = 'ai111.png'
+plt.savefig(filename, dpi=200)
+# open it & view, then delete
+os.remove(filename)
 
 # plt.legend()
 plt.show()

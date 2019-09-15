@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 __author__ = 'John'
-__date__ = '2019-09-13'
+__date__ = '2019-09-15'
 __product__ = 'PyCharm'
-__filename__ = '21_queue'
+__filename__ = '21_producer_consumer'
 
 """
 21 python中的进程间通信 线程间通信与生产者消费者模型_笔记
@@ -38,38 +38,42 @@ send和recv方法分别是发送和接收消息的方法.
 如果没有消息可接收, recv方法会一直阻塞. 如果管道已经被关闭, 那么recv方法会抛出EOFError
 """
 
-import multiprocessing
+"""
+1 queue.Queue是进程内非阻塞队列 其实就是线程之间的通信
+2 multiprocess.Queue是跨进程通信队列. 
+
+队列: 先进先出 后进后出
+生成者消费者模型  是通过线程来实现的
+"""
 import time
+import threading
+import queue
 
-# 进程间通信  发消息 数据
-# 队列 管道 Queue  Pipe
+# 线程间通信 队列
+# queue.Queue()
+# 操作系统课程  生产者与消费者模式
 
-# put  get
+q = queue.Queue(maxsize=10)
 
-# queue实现跨进程通信
+def producer(name):
+    count = 1
+    while True:
+        q.put('骨头%s'%count)
+        print('%s生产了骨头%s'%(name, count))
+        count+=1
+        time.sleep(0.5)
 
 
-def put(q):
-    for value in ['a', 'b', 'c']:
-        print('发送 %s 到queue中...'%value)
-        q.put(value)
+def consumer(name):
+    while True:
+        print('[%s]消费[%s]并且吃了它...'%(name, q.get()))
         time.sleep(2)
 
-def get(q):
-    while True:
-        value = q.get(True)
-        print('从queue取到数据: %s !'%value)
 
-q = multiprocessing.Queue()
+p = threading.Thread(target=producer, args=('dfy', ))
+c1 = threading.Thread(target=consumer, args=('zhangsan', ))
+c2 = threading.Thread(target=consumer, args=('lisi', ))
 
-pwrite = multiprocessing.Process(target=put, args=(q, ))
-pread = multiprocessing.Process(target=get, args=(q, ))
-
-pwrite.start()
-pread.start()
-
-pwrite.join()
-pread.terminate()
-
-print('父进程结束')
-
+p.start()
+c1.start()
+c2.start()
