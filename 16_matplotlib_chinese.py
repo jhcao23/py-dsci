@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 __author__ = 'John'
 __date__ = '2019-09-13'
 __product__ = 'PyCharm'
@@ -74,13 +73,42 @@ whiskerprops: 设置须的属性, 如颜色 粗细 线的类型等；
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import pandas as pd
+import matplotlib.font_manager as mfm
 
-mpl.rcParams['font.family'] = 'sans-serif'
-mpl.rcParams['font.sans-serif'] = ['SimHei']
-mpl.rcParams['axes.unicode_minus'] = False
 
+import subprocess
+from threading import Timer
+import os
+
+
+def call_fc_list_zh():
+    """Cache and list the font filenames known to `fc-list`.
+    """
+    # Delay the warning by 5s.
+    timer = Timer(5, print('wait 5s'))
+    timer.start()
+    try:
+        out = subprocess.check_output(['fc-list', ':lang=zh', '--format=%{file}\\n'])
+    except (OSError, subprocess.CalledProcessError):
+        return []
+    finally:
+        timer.cancel()
+    return [os.fsdecode(fname) for fname in out.split(b'\n')]
+
+zh_fonts = pd.unique(call_fc_list_zh())
+print('fc-list :lang=zh \n', zh_fonts)
 print(mpl.matplotlib_fname())
 
+# use command to find ttc list that supports Chinese:
+# fc-list :lang=zh
+# randomly choose one: Songti
+font_path = zh_fonts[2]
+prop = mfm.FontProperties(fname=font_path)
+fn =  mfm.findfont(prop, fontext='ttc')
+f = mfm.get_font(fn)
+mpl.rcParams['font.family'] = f.family_name
+mpl.rcParams['axes.unicode_minus'] = False
+print(mpl.rcParams)
 df1 = pd.DataFrame({
     u'计算机应用基础': [85, 78, 81, 95, 70, 67, 82, 72, 80, 81, 77],
     u'西方经济学': [93, 81, 76, 88, 66, 79, 83, 92, 78, 86, 78],
@@ -88,14 +116,12 @@ df1 = pd.DataFrame({
     u'英语': [76, 90, 97, 71, 70, 93, 86, 83, 78, 85, 81],
 })
 print(df1)
-# print(df1.describe())
 # df1.boxplot()
 # plt.show()
-# plt.style.use('ggplot')
+plt.style.use('ggplot')
 plt.boxplot(x=df1.values, labels=df1.columns, whis=1.5, showmeans=True)
-# plt.ylim(0, 85)
-
 plt.show()
+# plt.ylim(0, 85)
 
 
 """

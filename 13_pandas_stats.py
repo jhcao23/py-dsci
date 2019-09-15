@@ -99,37 +99,41 @@ df3.iloc[:4, 1] = np.nan
 df3.iloc[:2, 2] = np.nan
 # print(df3)
 print('-------')
-print(df3.fillna(1))
+print(df3.fillna(1)) # fillna doesn't change the original DataFrame
 print(df3.fillna({1: 0.5, 2: -1}))
 
-# print(df2.describe())
-# print(df2.median())
-# print(df2.var())
-# print(df2.std())
-# print(df2.corr())
-# print(df2.cov())
+print(df2.describe())
+print(df2.median())
+print(df2.var())
+print(df2.std())
+print(df2.corr())
+print(df2.cov())
 
 s1 = pd.Series(['a', 'b', 'c', 'b', 'a'])
-# print(s1.unique())
-# print(s1.value_counts()['a'])
-# print(s1.isin(['a', 'b']))
+print(s1.unique())
+print(s1.value_counts()['a'])
+print(s1.isin(['a', 'b']))
 
 df4 = pd.DataFrame(np.random.randint(10, 16, (3, 3)), columns=['dfy', 'zs', 'ls'])
 print(df4)
-# print(df4.ix[0].unique())
-# print(df4['dfy'].unique())
-# print(df4['dfy'].value_counts())
-# print(df4.ix[0].value_counts())
+print(df4.loc[0].unique())
+print(df4['dfy'].unique())
+print(df4['dfy'].value_counts())
+print(df4.loc[0].value_counts())
 print(df4['dfy'].isin([11]))
 
+# Read+Write CSV
 df1 = pd.DataFrame(np.arange(24).reshape((8, 3)))
 df1.columns = ['dfy', 'san', 'lisi']
 print(df1)
-df1.to_csv('df1.csv', index=False)
+filename = 'df1.csv'
+df1.to_csv(filename, index=False) # a prepended comma will be in first row if without index=False
 
-df2 = pd.read_csv('df1.csv')
+df2 = pd.read_csv(filename)
 print(df2)
 
+import os
+os.remove(filename)
 # 注意 保存和读入的 这样设置才可以让数据保持一致性
 
 

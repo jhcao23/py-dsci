@@ -29,6 +29,7 @@ plt.legend()
 """
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 from matplotlib import rcParams
 
 
@@ -37,22 +38,26 @@ dataOut = np.arange(24).reshape((4, 6))
 # print(dataOut)
 
 # 保存数据
-np.savetxt('data.txt', dataOut, fmt='%.2f')
+filename = 'data.txt'
+np.savetxt(filename, dataOut, fmt='%.2f')
 # 科学记数法  带e  4.773e-101
 
 # 读取数据
-data = np.loadtxt('data.txt')
-# print(data, data.dtype)
+data = np.loadtxt(filename)
+print(data, data.dtype)
+
+# clear the file
+os.remove(filename)
 
 y = np.random.randint(1, 11, 5)
 print(y)
 x = np.arange(len(y))
 print(x)
 
-# plt.figure(figsize=(6, 8))
-# print(rcParams['figure.figsize'])
-# plt.plot(x, y, color='r')
-# plt.bar(x, y, color='g')
+plt.figure(figsize=(6, 8))
+print(rcParams['figure.figsize'])
+plt.plot(x, y, color='r')
+plt.bar(x, y, color='g')
 plt.pie(y, explode=[0, 0.2, 0, 0, 0])
 plt.show()
 
